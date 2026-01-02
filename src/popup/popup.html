@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="popup.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&family=Roboto+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1>Duolingo Unfanizer</h1>
+      <p class="subtitle">"Я больше не твой фанат!"</p>
+      <p class="description">Автоматически удаляет неподтверждённые подписки в Duolingo</p>
+    </div>
+
+    <!-- Status -->
+    <div class="status-section">
+      <div id="status" class="status">Готов к работе</div>
+      <div id="progress" class="progress">
+        <div class="progress-bar"></div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-section">
+      <div class="stat-chip">
+        <span class="stat-value" id="totalFollowing">0</span>
+        <span class="stat-label">Подписок</span>
+      </div>
+      <div class="stat-chip">
+        <span class="stat-value" id="totalFollowers">0</span>
+        <span class="stat-label">Подписчиков</span>
+      </div>
+      <div class="stat-chip warning">
+        <span class="stat-value" id="extraFollowing">0</span>
+        <span class="stat-label">Удалить</span>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="actions-section">
+      <button id="analyzeBtn" class="material-button primary">
+        <span>Анализировать</span>
+      </button>
+      <button id="unfollowBtn" class="material-button danger" disabled>
+        <span>Удалить все</span>
+      </button>
+    </div>
+
+    <!-- Instructions -->
+    <div class="instructions-section">
+      <div class="instructions-header">
+        <h4>📋 Как использовать</h4>
+      </div>
+      <div class="instructions-content">
+        <ol>
+          <li><strong>Перейдите на страницу своего профиля Duolingo</strong></li>
+          <li><strong>Нажмите "Анализировать"</strong> чтобы найти неподтверждённые подписки</li>
+          <li><strong>Нажмите "Удалить все"</strong> для автоматического удаления</li>
+        </ol>
+        
+        <div class="note warning">
+          <strong>Важно:</strong> Если вы раньше не удаляли подписки, Duolingo может запросить подтверждение email. 
+          Попробуйте сначала удалить одну подписку вручную через интерфейс Duolingo.
+        </div>
+        
+        <div class="note info">
+          <strong>Как это работает:</strong> Расширение анализирует ваших подписчиков и подписки, находит тех, 
+          на кого вы подписаны, но кто не подписан на вас, и предлагает их удалить.
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings -->
+    <div class="settings-section">
+      <div class="setting-row">
+        <span class="setting-label">Максимум удалений за раз:</span>
+        <input type="number" id="maxUnfollow" class="setting-input" value="3" min="1" max="20">
+      </div>
+    </div>
+
+    <!-- Log -->
+    <div class="log-section">
+      <h3>Лог действий</h3>
+      <div id="log" class="log"></div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
